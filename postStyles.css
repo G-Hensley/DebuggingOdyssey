@@ -1,0 +1,691 @@
+/* These classes are for a particular font that I'll use for titles and subtitles */
+.chakra-petch-regular {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .chakra-petch-medium {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .chakra-petch-semibold {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .chakra-petch-bold {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  /* These are the main/root fonts and colors for the website */
+  :root {
+    --accent-color: rgb(20, 9, 65);
+    --main-bg: #1b1a55;
+    --main-font: 'Lato', sans-serif;
+    --font-color: #c0bfdd;
+    --font-color-accent: rgb(157, 157, 157);
+    --secondary-bg: #1c2f73;
+    --third-bg: #2c5e7c;
+    --link-bg: black;
+    --link-border: white;
+    --card-glow: rgb(37, 99, 156);
+  }
+  
+  /* This will control the light mode switch for the customer whenever it's either
+  set on their device or they click the light/dark mode button */
+  .light-mode {
+    --accent-color: rgb(76, 186, 250);
+    --main-bg: rgb(0, 162, 255);
+    --font-color: black;
+    --font-color-accent: rgb(97, 97, 97);
+    --secondary-bg: rgb(81, 180, 255);
+    --third-bg: blue;
+    --link-bg: white;
+    --link-border: black;
+    --card-glow: rgb(182, 250, 255);
+  }
+  
+  body, html {
+    background-color: var(--main-bg);
+    color: var(--font-color);
+    font-family: var(--main-font);
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  
+  /* This is for the main navigation bar that will contain the title and the links for
+  other websites */
+  .navbar {
+    align-items: flex-end;
+    background-color: var(--accent-color);
+    box-shadow: 0px 1px 20px black;
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  /* The title within the navbar */
+  .blog-title {
+    color: var(--font-color);
+    font-size: 2rem;
+    margin: 0;
+    margin-bottom: 0.2rem;
+    margin-left: 2rem;
+    text-shadow: 0px 1.2px var(--font-color-accent), 2px 1px 8px black;
+    text-decoration: none;
+  }
+  
+  /* Controls the dark/light mode switch/button */
+  #dark-light-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 0.1rem;
+    margin-left: auto;
+    padding: 0;
+    transition: all 0.2s;
+  }
+  
+  /* Shrinks the button when pressed/clicked */
+  #dark-light-btn:active {
+    transform: scale(0.9);
+  }
+  
+  /* Decrease the opacity to ensure the user knows they're hovering over a button */
+  #dark-light-btn:hover {
+    opacity: 70%;
+  }
+  
+  /* Alter the image for the dark mode button to ensure it fits in the navbar */
+  .dk-lt-img {
+    width: 1.6rem;
+  }
+  
+  /* This will hide the nav toggle and label for the toggle
+  until the users display is 800px or less wide */
+  .nav-toggle {
+    display: none;
+  }
+  
+  .nav-label {
+    display: none;
+  }
+  
+  /* Controls the unordered list for the navigation 
+  links in the navbar */
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin-bottom: 0.2rem;
+    margin-right: 4rem;
+  }
+  
+  /* The individual links */
+  .nav-link {
+    color: var(--font-color);
+    font-family: var(--main-font);
+    font-size: 1.4rem;
+    position: relative;
+    text-decoration: none;
+  }
+  
+  /* This ensures that the links don't change when you hover
+  or after you vist the link */
+  .nav-link:any-link {
+    color: var(--font-color);
+  }
+  
+  /* This will create/control the bar that will be animated to
+  slid under each of the links */
+  .nav-link::after {
+    background-color: var(--font-color);
+    bottom: -2px;
+    content: '';
+    height: 3px;
+    left: 0;
+    position: absolute;
+    transition: width 0.3s;
+    width: 0%;
+  }
+  
+  /* This will create that effect when you hover over any
+  of the navigation links */
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* This is the main content. Where the recent posts and projects will be.
+It will be a flexbox to contain both side by side. */
+.main-content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    height: fit-content;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    margin-top: 60px;
+    position: relative;
+    width: 100vw;
+}
+
+/* This will be the post section that will be a flexbox to contain the title and the post cards that will be a grid. */
+.post-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.posts-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 0.85fr));
+    margin: 0;
+    padding: 0 2rem 2rem 2rem;
+}
+
+/* This will make the cards a clickable link */
+.post-card-link {
+  display: block;
+  height: fit-content;
+  position: relative;
+  text-decoration: none;
+}
+
+/* Creating the cards that will contain the most recent blog post information such
+as the title, date, and an image */
+.post-card {
+  border-radius: 20px;
+  box-shadow: 0px 6px 10px -2px black;
+  display: flex;
+  flex-direction: column;
+  height: 280px;
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+
+/* Create the hover effect for the post cards */
+.post-card:hover {
+  box-shadow: 0 0 20px 1px var(--card-glow);
+  transform: scale(1.03);
+}
+
+/* Creating the top of the cards that will contain the title */
+.card-head {
+  align-items: center;
+  background-color: var(--secondary-bg);
+  border-radius: 16px 16px 0px 0px;
+  display: flex;
+  font-size: 1.5rem;
+  height: 3.5rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.card-title {
+  color: var(--font-color);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* This is to control the images for the post cards */
+.card-img {
+  border-radius: 0px 0px 16px 16px;
+  height: 100%;
+  position: relative;
+  transition: all 0.4s;
+  width: 100%;
+}
+
+/* This will control the description text for the post cards which will be
+hidden until the user hovers */
+.card-description {
+  color: var(--font-color);
+  font-size: 1.5rem;
+  font-weight: 800;
+  left: 10%;
+  position: absolute;
+  opacity: 0%;
+  text-align: center;
+  text-decoration: none;
+  top: 25%;
+  transition: opacity 0.4s;
+  width: 80%;
+}
+
+/* Makes the post description a block element when the user hovers over the card(s) */
+.post-card:hover .card-description {
+  opacity: 100%;
+}
+
+.post-card:hover .card-img {
+  opacity: 20%;
+}
+
+footer {
+    background-color: var(--accent-color);
+    bottom: 0;
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    margin: auto;
+    padding: 1.5rem 0 1.5rem 0;
+    position:relative;
+    width: 100%;
+  }
+  
+  /* This will control the titles for the sections in the footer */
+  .footer-section-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+    position: relative;
+  }
+  
+  /* Creating this to control the layout of my networking links */
+  .networking-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: auto;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .networking-links a {
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+  
+  #github-logo, #goodreads-logo, #linkedin-logo {
+    margin: 0;
+    padding: 0;
+    transition: 0.5s;
+    width: 2rem;
+  }
+  
+  #github-logo:hover, #goodreads-logo:hover, #linkedin-logo:hover {
+    transform: scale(1.2);
+  }
+  
+  /* this is to contain the individual page links */
+  .page-links-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* This controls the individual page links */
+  .page-link {
+    color: var(--font-color);
+    font-size: 1.2rem;
+    font-weight: 550;
+    position: relative;
+    text-decoration: none;
+    width: fit-content;
+  }
+  
+  .page-link::after {
+    background-color: var(--font-color);
+    bottom: -2px;
+    content: "";
+    height: 3px;
+    left: 0;
+    position: absolute;
+    transition: width 0.3s;
+    width: 0%;
+  }
+  
+  .page-link:hover::after {
+    width: 100%;
+  }
+  
+  /* This will control the items for the contact section and will contain them */
+  .contact-section {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+  }
+  
+  /* Controls the individual items in the contact section */
+  .contact-info {
+    font-size: 1.2rem;
+    font-weight: 550;
+    margin: 0;
+  }
+  
+  .contact-link {
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+  
+  #x-logo {
+    margin: 0;
+    padding: 0;
+    transition: 0.5s;
+    width: 2rem;
+  }
+  
+  #x-logo:hover {
+    transform: scale(1.2);
+  }
+
+  @media screen and (max-width: 1400px) {
+    /* Switches the content to a column instead of a row */
+    .main-content {
+      flex-direction: column;
+      gap: 0;
+      padding-top: 20px;
+    }
+
+    /* Allows the post section to take up the entire width of the screen */
+  .post-section {
+    width: 100%;
+  }
+
+  .posts-grid {
+    justify-content: center;
+  }
+
+  .section-title {
+    margin-top: 0;
+  }
+  }
+
+  @media screen and (max-width: 800px) {
+    /* Creating the nav label as an object with a width height
+      and background color to make a design and animation with it. */
+      .nav-label, .nav-label::before, .nav-label::after {
+        background-color: var(--font-color);
+        border-radius: 20px;
+        cursor: pointer;
+        display: block;
+        height: 4.5px;
+        margin: auto;
+        margin-bottom: 0.9rem;
+        margin-right: 2rem;
+        padding: 0;
+        transition: all 0.5s;
+        width: 35px;
+    }
+  
+    .nav-label::before, .nav-label::after {
+      content: "";
+  }
+  
+  .nav-label::before {
+      transform: translateY(-0.5rem);
+  }
+  
+  .nav-label::after {
+      transform: translateY(-0.7rem);
+  }
+  
+  /* Create the changed classes to change up the postioning
+  of the label after clicked. Will perform an animation. */
+  .label-changed {
+      transform: rotate(720deg);
+      background-color: transparent;
+  }
+  
+  .nav-label.label-changed::before {
+      transform: translateY(0rem) rotate(45deg);
+  }
+  
+  .nav-label.label-changed::after {
+      transform: translateY(-1.2rem) rotate(-45deg);
+  }
+  
+  /* This pushes the navigation links off the screen 
+  until the label/checkbox is clicked/pressed */
+  .nav-links {
+    align-items: flex-start;
+    background-color: var(--link-bg);
+    border: 2px solid var(--link-border);
+    border-radius: 20px 0 0 20px;
+    border-right: 0;
+    flex-direction: column;
+    height: fit-content;
+    margin: 0;
+    padding: 3rem 2rem 3rem 2rem;
+    position: absolute;
+    right: -60%;
+    text-wrap: nowrap;
+    top: 65px;
+    width: fit-content;
+  }
+  
+  .nav-link {
+    font-size: 1.8rem;
+    position: relative;
+  }
+  
+  /* Removing the underline effect from the links */
+  .nav-link::after {
+    height: 0;
+  }
+  
+  /* Create the classes for the links sliding animation */
+  .slide-links-in {
+    animation: slide-links-in 0.5s ease forwards;
+  }
+  
+  .slide-links-out {
+    animation: slide-links-out 0.5s ease forwards;
+  }
+  
+  /* Create keyframes to control the animations for sliding the links on and off
+  the page */
+  @keyframes slide-links-in {
+    from {
+        right: -60%;
+    }
+    to {
+        right: 0%;
+    }
+  }
+  
+  @keyframes slide-links-out {
+    from {
+        right: 0%;
+    }
+    to {
+        right: -60%;
+    }
+  }
+  
+  }
+
+  @media screen and (max-width: 625px) {
+    .blog-title {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+  
+    footer {
+      align-items: center;
+      flex-direction: column;
+      gap: 2rem;
+  }
+  
+    .networking-links {
+      flex-direction: row;
+    }
+  }
+  
+  @media screen and (max-width: 450px) {
+    .blog-title {
+      font-size: 1.3rem;
+    }
+  }
+  
+  /* For touch devices (mobile, tablet) */
+  @media (hover: none) and (pointer: coarse) {
+    /* Flip card container */
+    .post-card {
+      perspective: 1000px;
+      transition: transform 0.4s;
+    }
+  
+    .project-card {
+      overflow: hidden;
+      perspective: 1000px;
+      position: relative;
+      transition: transform 0.4s;
+    }
+  
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+  
+    /* Front and back of the card */
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+    }
+  
+    /* Front of the card */
+    .card-front {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+  
+    /* Back of the card */
+    .card-back {
+      background-color: var(--secondary-bg);
+      color: var(--font-color);
+      transform: rotateY(180deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+  
+    /* Flip the card when it's active */
+    .post-card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+  
+    /* Disable hover effect for touch devices */
+    .post-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+  
+  /* Desktop and non-touch devices */
+  @media (hover: hover) and (pointer: fine) {
+    .post-card {
+      position: relative; /* Make sure the card itself is relative to position the description properly */
+      transition: 0.4s ease;
+    }
+  
+      /* Front and back should behave as normal */
+      .card-front {
+        position: relative;
+        height: 100%;
+        width: 100%;
+      }
+  
+    /* Card description hidden by default */
+    .card-description {
+      opacity: 0; /* Start with opacity 0 */
+      transition: opacity 0.3s ease-in-out;
+      position: absolute; /* Position description absolutely inside the card */
+      top: 50%; /* Vertically center */
+      left: 10%; /* Horizontally center with space */
+      width: 80%; /* Make sure it takes appropriate width */
+      text-align: center; /* Center the text */
+      font-weight: 800;
+      color: var(--font-color);
+      transform: translateY(-50%); /* Center the text vertically */
+      z-index: 3; /* Ensure it's above the image */
+    }
+  
+    /* Show the description on hover */
+    .post-card:hover .card-description {
+      opacity: 1; /* Show description on hover */
+    }
+  
+    /* Ensure the image dims on hover */
+    .post-card:hover .card-img {
+      opacity: 0.2; /* Dim the image */
+      transition: opacity 0.3s ease-in-out;
+    }
+  
+    /* Ensure the card hover effect applies */
+    .post-card:hover {
+      box-shadow: 0 0 20px 1px var(--card-glow);
+      transform: scale(1.03);
+    }
+  
+    .project-card {
+      overflow: hidden;
+      position: relative; /* Make sure the card itself is relative to position the description properly */
+      transition: 0.4s ease;
+    }
+  
+    /* Show the description on hover */
+    .project-card:hover .card-description {
+      opacity: 1; /* Show description on hover */
+    }
+  
+    /* Ensure the image dims on hover */
+    .project-card:hover .card-img {
+      opacity: 0.2; /* Dim the image */
+      transition: opacity 0.3s ease-in-out;
+    }
+  
+    /* Ensure the card hover effect applies */
+    .project-card:hover {
+      box-shadow: 0 0 20px 1px var(--card-glow);
+      transform: scale(1.03);
+    }
+  
+    
+  }
