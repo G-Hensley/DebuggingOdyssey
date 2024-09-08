@@ -114,26 +114,42 @@ darkLightBtn.addEventListener('click', () => {
 
 // Select all the post cards
 const postCards = document.querySelectorAll('.post-card');
+const projectCards = document.querySelectorAll('.project-card');
 
 // Check if the device supports touch
 if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-  // Loop through each card and add an event listener for touch events
+  // Loop through each post card and add an event listener for touch events
   postCards.forEach((card) => {
     card.addEventListener('click', function () {
-      // Toggle the 'flipped' class to flip the card
+      this.classList.toggle('flipped');
+    });
+  });
+
+  // Loop through each project card and add an event listener for touch events
+  projectCards.forEach((card) => {
+    card.addEventListener('click', function () {
       this.classList.toggle('flipped');
     });
   });
 }
 
-document.querySelectorAll('.post-card-link').forEach(card => {
+// Prevent hover effect on touch devices
+document.querySelectorAll('.post-card-link, .project-card-link').forEach(card => {
   card.addEventListener('click', function(e) {
     const postCard = this.querySelector('.post-card');
+    const projectCard = this.querySelector('.project-card');
     
-    // If the card is not flipped, prevent the default action (following the link)
-    if (!postCard.classList.contains('flipped')) {
+    // Flip the post card on click if it exists
+    if (postCard && !postCard.classList.contains('flipped')) {
       e.preventDefault();
       postCard.classList.add('flipped');
     }
+
+    // Flip the project card on click if it exists
+    if (projectCard && !projectCard.classList.contains('flipped')) {
+      e.preventDefault();
+      projectCard.classList.add('flipped');
+    }
   });
 });
+
