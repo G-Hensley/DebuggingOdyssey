@@ -616,6 +616,13 @@ footer {
       transform: none;
       box-shadow: none;
     }
+
+    .card-description {
+        opacity: 100%;
+        padding: 0 10%;
+        top: 10%;
+        width: auto;
+      }
   }
   
   /* Desktop and non-touch devices */

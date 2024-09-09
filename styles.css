@@ -715,6 +715,7 @@ the page */
   }
 
   .card-description {
+    opacity: 100%;
     padding: 0 10%;
     top: 10%;
     width: auto;
