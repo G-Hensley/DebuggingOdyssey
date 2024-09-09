@@ -143,3 +143,22 @@ function handleCardFlip(cards) {
 // Apply the card flip functionality to both post and project cards
 handleCardFlip(document.querySelectorAll('.post-card'));
 handleCardFlip(document.querySelectorAll('.project-card'));
+
+
+// Select all the navigation links in the navbar
+const navLinks = document.querySelectorAll('.nav-link');
+
+// Function to close the navigation menu
+function closeMenu() {
+  document.querySelector('.nav-label').classList.remove('label-changed');
+  toggleLinks(links);  // This function hides the nav links
+  wrapper.style.opacity = 1;
+  wrapper.style.filter = 'blur(0)';
+}
+
+// Add event listeners to each navigation link in the navbar
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    closeMenu();  // Close the menu when any navbar link is clicked
+  });
+});
