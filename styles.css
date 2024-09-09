@@ -663,7 +663,6 @@ the page */
   .project-card {
     overflow: hidden;
     perspective: 1000px;
-    position: relative;
     transition: transform 0.4s;
   }
 
@@ -714,12 +713,25 @@ the page */
     transform: none;
   }
 
+  .project-card:hover {
+    box-shadow: none;
+    opacity: 100%;
+    transform: none;
+  }
+
   .card-description {
     opacity: 100%;
     padding: 0 10%;
     top: 10%;
     width: auto;
   }
+
+  /* The flipped class will rotate the card */
+.post-card.flipped .card-inner,
+.project-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
 }
 
 /* Desktop and non-touch devices */

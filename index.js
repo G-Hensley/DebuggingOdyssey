@@ -112,68 +112,34 @@ darkLightBtn.addEventListener('click', () => {
   }
 });
 
-// Select all the post cards
+// Select all the post cards and project cards
 const postCards = document.querySelectorAll('.post-card');
 const projectCards = document.querySelectorAll('.project-card');
-
-// Check if the device supports touch
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-  // Loop through each post card and add an event listener for touch events
-  postCards.forEach((card) => {
-    card.addEventListener('click', function () {
-      this.classList.toggle('flipped');
-    });
-  });
-
-  // Loop through each project card and add an event listener for touch events
-  projectCards.forEach((card) => {
-    card.addEventListener('click', function () {
-      this.classList.toggle('flipped');
-    });
-  });
-}
-
-// Prevent hover effect on touch devices
-document.querySelectorAll('.post-card-link, .project-card-link').forEach(card => {
-  card.addEventListener('click', function(e) {
-    const postCard = this.querySelector('.post-card');
-    const projectCard = this.querySelector('.project-card');
-    
-    // Flip the post card on click if it exists
-    if (postCard && !postCard.classList.contains('flipped')) {
-      e.preventDefault();
-      postCard.classList.add('flipped');
-    }
-
-    // Flip the project card on click if it exists
-    if (projectCard && !projectCard.classList.contains('flipped')) {
-      e.preventDefault();
-      projectCard.classList.add('flipped');
-    }
-  });
-});
 
 // Function to handle card flipping behavior
 function handleCardFlip(cards) {
   cards.forEach((card) => {
-    card.addEventListener('click', function () {
+    const cardLink = card.querySelector('a'); // Select the link inside the card, if any
+
+    card.addEventListener('click', function (e) {
+      // Check if the card is already flipped
+      if (!card.classList.contains('flipped')) {
+        e.preventDefault(); // Prevent the link from being followed on the first click
+      }
+
       // Close any other cards that are already flipped
       cards.forEach((otherCard) => {
         if (otherCard !== this && otherCard.classList.contains('flipped')) {
           otherCard.classList.remove('flipped');
         }
       });
-      
+
       // Flip the selected card
       this.classList.toggle('flipped');
     });
   });
 }
 
-// Check if the device supports touch
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-  // Apply the card flip functionality to both post and project cards
-  handleCardFlip(postCards);
-  handleCardFlip(projectCards);
-}
-
+// Apply the card flip functionality to both post and project cards
+handleCardFlip(document.querySelectorAll('.post-card'));
+handleCardFlip(document.querySelectorAll('.project-card'));
