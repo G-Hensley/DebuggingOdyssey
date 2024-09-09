@@ -68,6 +68,7 @@
     background-color: var(--accent-color);
     box-shadow: 0px 1px 20px black;
     display: flex;
+    height: 45px;
     justify-content: center;
     padding-top: 0.5rem;
     position: fixed;
@@ -719,18 +720,18 @@ the page */
     transform: none;
   }
 
-  .card-description {
-    opacity: 100%;
-    padding: 0 10%;
-    top: 10%;
-    width: auto;
-  }
-
-  /* The flipped class will rotate the card */
+    /* The flipped class will rotate the card */
 .post-card.flipped .card-inner,
 .project-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
+
+  .post-card.flipped .card-description {
+    opacity: 100%;
+      padding: 0 10%;
+      top: 10%;
+      width: auto;
+  }
 
 }
 
