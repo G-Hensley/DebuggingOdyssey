@@ -561,7 +561,9 @@ recent projects */
   /* For touch devices (mobile, tablet) */
   @media (hover: none) and (pointer: coarse) {
     .project-card {
+        overflow: hidden;
         perspective: 1000px;
+        position: relative;
         transition: transform 0.4s;
       }
     

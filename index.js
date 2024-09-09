@@ -153,3 +153,27 @@ document.querySelectorAll('.post-card-link, .project-card-link').forEach(card =>
   });
 });
 
+// Function to handle card flipping behavior
+function handleCardFlip(cards) {
+  cards.forEach((card) => {
+    card.addEventListener('click', function () {
+      // Close any other cards that are already flipped
+      cards.forEach((otherCard) => {
+        if (otherCard !== this && otherCard.classList.contains('flipped')) {
+          otherCard.classList.remove('flipped');
+        }
+      });
+      
+      // Flip the selected card
+      this.classList.toggle('flipped');
+    });
+  });
+}
+
+// Check if the device supports touch
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  // Apply the card flip functionality to both post and project cards
+  handleCardFlip(postCards);
+  handleCardFlip(projectCards);
+}
+
