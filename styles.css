@@ -714,10 +714,26 @@ the page */
     transform: none;
   }
 
+  .post-card:hover .card-description {
+    opacity: 0%;
+  }
+
+  .post-card:hover .card-img {
+    opacity: 100%;
+  }
+
   .project-card:hover {
     box-shadow: none;
     opacity: 100%;
     transform: none;
+  }
+
+  .project-card:hover .card-description {
+    opacity: 0%;
+  }
+
+  .project-card:hover .card-img {
+    opacity: 100%;
   }
 
     /* The flipped class will rotate the card */
@@ -728,7 +744,10 @@ the page */
 
   .post-card.flipped .card-description {
     opacity: 100%;
-      padding: 0 10%;
+  }
+
+  .card-description {
+    padding: 0 10%;
       top: 10%;
       width: auto;
   }
