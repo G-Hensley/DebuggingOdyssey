@@ -25,30 +25,31 @@
   
   /* These are the main/root fonts and colors for the website */
   :root {
-    --accent-color: rgb(20, 9, 65);
-    --main-bg: #1b1a55;
     --main-font: 'Lato', sans-serif;
-    --font-color: #c0bfdd;
-    --font-color-accent: rgb(157, 157, 157);
-    --secondary-bg: #1c2f73;
-    --third-bg: #2c5e7c;
-    --link-bg: black;
-    --link-border: white;
-    --card-glow: rgb(37, 99, 156);
-  }
+    --accent-color: #18323a;        /* A dark, muted teal for a calm accent */
+    --secondary-accent: #1e3338;    /* A mid-dark grayish teal */
+    --third-accent: #1d4b53;
+    --main-bg: #101820;             /* A very dark, almost black background */
+    --font-color: #e0e0e0;          /* A light gray for readable text */
+    --font-color-accent: #c0c0c0;   /* Slightly darker gray for less important text */
+    --secondary-bg: #2b4a56;        /* A darker teal/blue background for sections */
+    --pop-color: #577eff;           /* Bright purple/blue for popping elements */
+    --links-border: #e0e0e0;        /* Light gray for link borders to contrast with dark background */
+    --card-glow: teal;
+}
   
   /* This will control the light mode switch for the customer whenever it's either
   set on their device or they click the light/dark mode button */
   .light-mode {
-    --accent-color: rgb(76, 186, 250);
-    --main-bg: rgb(0, 162, 255);
+    --accent-color: #c1d1d8;
+    --secondary-accent: #7f888b;
+    --main-bg: #d9f4fd;
     --font-color: black;
     --font-color-accent: rgb(97, 97, 97);
-    --secondary-bg: rgb(81, 180, 255);
-    --third-bg: blue;
-    --link-bg: white;
-    --link-border: black;
-    --card-glow: rgb(182, 250, 255);
+    --secondary-bg: #9bbed2;
+    --pop-color: #001989;
+    --links-border: black;
+    --card-glow: blue;
   }
   
   body, html {
@@ -64,13 +65,12 @@
   /* This is for the main navigation bar that will contain the title and the links for
   other websites */
   .navbar {
-    align-items: flex-end;
-    background-color: var(--accent-color);
-    box-shadow: 0px 1px 20px black;
+    align-items: center;
+    background-image: linear-gradient(180deg, var(--accent-color), var(--secondary-accent));
+    box-shadow: 0px 1px 20px -6px black;
     display: flex;
-    height: 45px;
+    height: 60px;
     justify-content: center;
-    padding-top: 0.5rem;
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -81,9 +81,8 @@
     color: var(--font-color);
     font-size: 2rem;
     margin: 0;
-    margin-bottom: 0.2rem;
     margin-left: 2rem;
-    text-shadow: 0px 1.2px var(--font-color-accent), 2px 1px 8px black;
+    padding: 0;
     text-decoration: none;
   }
   
@@ -92,8 +91,8 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin-bottom: 0.1rem;
     margin-left: auto;
+    margin-top: 5px;
     padding: 0;
     transition: all 0.2s;
   }
@@ -129,7 +128,6 @@
     display: flex;
     gap: 20px;
     list-style: none;
-    margin-bottom: 0.2rem;
     margin-right: 4rem;
   }
   
@@ -151,7 +149,7 @@
   /* This will create/control the bar that will be animated to
   slid under each of the links */
   .nav-link::after {
-    background-color: var(--font-color);
+    background-color: var(--links-border);
     bottom: -2px;
     content: '';
     height: 3px;
@@ -221,8 +219,8 @@ It will be a flexbox to contain both side by side. */
 /* Creating the cards that will contain the most recent blog post information such
 as the title, date, and an image */
 .post-card {
-  border-radius: 20px;
-  box-shadow: 0px 6px 10px -2px black;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px -1px black;
   display: flex;
   flex-direction: column;
   height: 280px;
@@ -232,7 +230,6 @@ as the title, date, and an image */
 
 /* Create the hover effect for the post cards */
 .post-card:hover {
-  box-shadow: 0 0 20px 1px var(--card-glow);
   transform: scale(1.03);
 }
 
@@ -240,7 +237,6 @@ as the title, date, and an image */
 .card-head {
   align-items: center;
   background-color: var(--secondary-bg);
-  border-radius: 16px 16px 0px 0px;
   display: flex;
   font-size: 1.5rem;
   height: 3.5rem;
@@ -259,7 +255,6 @@ as the title, date, and an image */
 
 /* This is to control the images for the post cards */
 .card-img {
-  border-radius: 0px 0px 16px 16px;
   height: 100%;
   position: relative;
   transition: all 0.4s;
@@ -277,7 +272,6 @@ hidden until the user hovers */
   opacity: 0%;
   text-align: center;
   text-decoration: none;
-  top: 25%;
   transition: opacity 0.4s;
   width: 80%;
 }
@@ -293,7 +287,8 @@ hidden until the user hovers */
 
 /* An hr that will be vertical to seperate the post and project sections */
 .section-divider {
-  background-color: white;
+  background-image: linear-gradient(180deg, var(--accent-color), var(--secondary-accent));
+  border: none;
   height: inherit(post-section);
   margin: 0;
   padding: 0px;
@@ -330,8 +325,8 @@ recent projects */
 }
 
 .project-card {
-  border-radius: 20px;
-    box-shadow: 0px 6px 10px -2px black;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px -1px black;
     display: flex;
     flex-direction: column;
     height: 220px;
@@ -340,7 +335,6 @@ recent projects */
 }
 
 .project-card:hover {
-  box-shadow: 0 0 20px 1px var(--card-glow);
   transform: scale(1.03);
 }
 
@@ -353,7 +347,7 @@ recent projects */
 }
 
 footer {
-  background-color: var(--accent-color);
+  background-image: linear-gradient(180deg, var(--accent-color) ,var(--secondary-accent));
   bottom: 0;
   display: flex;
   gap: 4rem;
@@ -367,7 +361,7 @@ footer {
 /* This will control the titles for the sections in the footer */
 .footer-section-title {
   font-size: 1.4rem;
-  font-weight: bold;
+  font-weight: 750;
   margin-bottom: 0;
   margin-top: 0;
   padding: 0;
@@ -415,14 +409,14 @@ footer {
 .page-link {
   color: var(--font-color);
   font-size: 1.2rem;
-  font-weight: 550;
+  font-weight: 450;
   position: relative;
   text-decoration: none;
   width: fit-content;
 }
 
 .page-link::after {
-  background-color: var(--font-color);
+  background-color: var(--links-border);
   bottom: -2px;
   content: "";
   height: 3px;
@@ -467,6 +461,11 @@ footer {
 
 #x-logo:hover {
   transform: scale(1.2);
+}
+
+#current-page {
+  color: var(--pop-color);
+  font-weight: bolder;
 }
 
 @media screen and (max-width: 1400px) {
@@ -519,16 +518,15 @@ footer {
   /* Creating the nav label as an object with a width height
     and background color to make a design and animation with it. */
     .nav-label, .nav-label::before, .nav-label::after {
-      background-color: var(--font-color);
+      background-color: var(--pop-color);
       border-radius: 20px;
       cursor: pointer;
       display: block;
       height: 4.5px;
       margin: auto;
-      margin-bottom: 0.9rem;
       margin-right: 2rem;
       padding: 0;
-      transition: all 0.5s;
+      transition: all 0.3s;
       width: 35px;
   }
 
@@ -537,7 +535,7 @@ footer {
 }
 
 .nav-label::before {
-    transform: translateY(-0.5rem);
+    transform: translateY(0.4rem);
 }
 
 .nav-label::after {
@@ -547,24 +545,24 @@ footer {
 /* Create the changed classes to change up the postioning
 of the label after clicked. Will perform an animation. */
 .label-changed {
-    transform: rotate(720deg);
+    transform: rotate(360deg);
     background-color: transparent;
 }
 
 .nav-label.label-changed::before {
-    transform: translateY(0rem) rotate(45deg);
+    transform: translateY(0.1rem) rotate(45deg);
 }
 
 .nav-label.label-changed::after {
-    transform: translateY(-1.2rem) rotate(-45deg);
+    transform: translateY(-0.2rem) rotate(-45deg);
 }
 
 /* This pushes the navigation links off the screen 
 until the label/checkbox is clicked/pressed */
 .nav-links {
   align-items: flex-start;
-  background-color: var(--link-bg);
-  border: 2px solid var(--link-border);
+  background-color: var(--secondary-accent);
+  border: 3px solid var(--links-border);
   border-radius: 20px 0 0 20px;
   border-right: 0;
   flex-direction: column;
@@ -773,7 +771,7 @@ the page */
     opacity: 0; /* Start with opacity 0 */
     transition: opacity 0.3s ease-in-out;
     position: absolute; /* Position description absolutely inside the card */
-    top: 50%; /* Vertically center */
+    top: 45%; /* Vertically center */
     left: 10%; /* Horizontally center with space */
     width: 80%; /* Make sure it takes appropriate width */
     text-align: center; /* Center the text */
@@ -796,7 +794,6 @@ the page */
 
   /* Ensure the card hover effect applies */
   .post-card:hover {
-    box-shadow: 0 0 20px 1px var(--card-glow);
     transform: scale(1.03);
   }
 
@@ -819,7 +816,6 @@ the page */
 
   /* Ensure the card hover effect applies */
   .project-card:hover {
-    box-shadow: 0 0 20px 1px var(--card-glow);
     transform: scale(1.03);
   }
 

@@ -25,30 +25,31 @@
   
   /* These are the main/root fonts and colors for the website */
   :root {
-    --accent-color: rgb(20, 9, 65);
-    --main-bg: #1b1a55;
     --main-font: 'Lato', sans-serif;
-    --font-color: #c0bfdd;
-    --font-color-accent: rgb(157, 157, 157);
-    --secondary-bg: #1c2f73;
-    --third-bg: #2c5e7c;
-    --link-bg: black;
-    --link-border: white;
-    --card-glow: rgb(37, 99, 156);
-  }
+    --accent-color: #18323a;        /* A dark, muted teal for a calm accent */
+    --secondary-accent: #1e3338;    /* A mid-dark grayish teal */
+    --third-accent: #1d4b53;
+    --main-bg: #101820;             /* A very dark, almost black background */
+    --font-color: #e0e0e0;          /* A light gray for readable text */
+    --font-color-accent: #c0c0c0;   /* Slightly darker gray for less important text */
+    --secondary-bg: #2b4a56;        /* A darker teal/blue background for sections */
+    --pop-color: #577eff;           /* Bright purple/blue for popping elements */
+    --links-border: #e0e0e0;        /* Light gray for link borders to contrast with dark background */
+    --card-glow: teal;
+}
   
   /* This will control the light mode switch for the customer whenever it's either
   set on their device or they click the light/dark mode button */
   .light-mode {
-    --accent-color: rgb(76, 186, 250);
-    --main-bg: rgb(0, 162, 255);
+    --accent-color: #c1d1d8;
+    --secondary-accent: #7f888b;
+    --main-bg: #d9f4fd;
     --font-color: black;
     --font-color-accent: rgb(97, 97, 97);
-    --secondary-bg: rgb(81, 180, 255);
-    --third-bg: blue;
-    --link-bg: white;
-    --link-border: black;
-    --card-glow: rgb(182, 250, 255);
+    --secondary-bg: #9bbed2;
+    --pop-color: #001989;
+    --links-border: black;
+    --card-glow: blue;
   }
   
   body, html {
@@ -64,13 +65,12 @@
   /* This is for the main navigation bar that will contain the title and the links for
   other websites */
   .navbar {
-    align-items: flex-end;
-    background-color: var(--accent-color);
-    box-shadow: 0px 1px 20px black;
+    align-items: center;
+    background-image: linear-gradient(180deg, var(--accent-color), var(--secondary-accent));
+    box-shadow: 0px 1px 20px -6px black;
     display: flex;
-    height: 45px;
+    height: 60px;
     justify-content: center;
-    padding-top: 0.5rem;
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -81,9 +81,8 @@
     color: var(--font-color);
     font-size: 2rem;
     margin: 0;
-    margin-bottom: 0.2rem;
     margin-left: 2rem;
-    text-shadow: 0px 1.2px var(--font-color-accent), 2px 1px 8px black;
+    padding: 0;
     text-decoration: none;
   }
   
@@ -92,8 +91,8 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin-bottom: 0.1rem;
     margin-left: auto;
+    margin-top: 5px;
     padding: 0;
     transition: all 0.2s;
   }
@@ -129,7 +128,6 @@
     display: flex;
     gap: 20px;
     list-style: none;
-    margin-bottom: 0.2rem;
     margin-right: 4rem;
   }
   
@@ -151,7 +149,7 @@
   /* This will create/control the bar that will be animated to
   slid under each of the links */
   .nav-link::after {
-    background-color: var(--font-color);
+    background-color: var(--links-border);
     bottom: -2px;
     content: '';
     height: 3px;
@@ -165,6 +163,11 @@
   of the navigation links */
   .nav-link:hover::after {
     width: 100%;
+  }
+
+  #current-page {
+    color: var(--pop-color);
+    font-weight: bolder;
   }
 
   .wrapper {
@@ -233,7 +236,6 @@ recent projects */
   }
   
   .project-card:hover {
-    box-shadow: 0 0 20px 1px var(--card-glow);
     transform: scale(1.03);
   }
   
@@ -429,106 +431,106 @@ recent projects */
 
   @media screen and (max-width: 800px) {
     /* Creating the nav label as an object with a width height
-      and background color to make a design and animation with it. */
-      .nav-label, .nav-label::before, .nav-label::after {
-        background-color: var(--font-color);
-        border-radius: 20px;
-        cursor: pointer;
-        display: block;
-        height: 4.5px;
-        margin: auto;
-        margin-bottom: 0.9rem;
-        margin-right: 2rem;
-        padding: 0;
-        transition: all 0.5s;
-        width: 35px;
-    }
-  
-    .nav-label::before, .nav-label::after {
-      content: "";
+    and background color to make a design and animation with it. */
+    .nav-label, .nav-label::before, .nav-label::after {
+      background-color: var(--pop-color);
+      border-radius: 20px;
+      cursor: pointer;
+      display: block;
+      height: 4.5px;
+      margin: auto;
+      margin-right: 2rem;
+      padding: 0;
+      transition: all 0.3s;
+      width: 35px;
   }
-  
-  .nav-label::before {
-      transform: translateY(-0.5rem);
+
+  .nav-label::before, .nav-label::after {
+    content: "";
+}
+
+.nav-label::before {
+    transform: translateY(0.4rem);
+}
+
+.nav-label::after {
+    transform: translateY(-0.7rem);
+}
+
+/* Create the changed classes to change up the postioning
+of the label after clicked. Will perform an animation. */
+.label-changed {
+    transform: rotate(360deg);
+    background-color: transparent;
+}
+
+.nav-label.label-changed::before {
+    transform: translateY(0.1rem) rotate(45deg);
+}
+
+.nav-label.label-changed::after {
+    transform: translateY(-0.2rem) rotate(-45deg);
+}
+
+/* This pushes the navigation links off the screen 
+until the label/checkbox is clicked/pressed */
+.nav-links {
+  align-items: flex-start;
+  background-color: var(--secondary-accent);
+  border: 3px solid var(--links-border);
+  border-radius: 20px 0 0 20px;
+  border-right: 0;
+  flex-direction: column;
+  height: fit-content;
+  margin: 0;
+  padding: 3rem 2rem 3rem 2rem;
+  position: absolute;
+  right: -60%;
+  text-wrap: nowrap;
+  top: 65px;
+  width: fit-content;
+}
+
+.nav-link {
+  font-size: 1.8rem;
+  position: relative;
+}
+
+/* Removing the underline effect from the links */
+.nav-link::after {
+  height: 0;
+}
+
+/* Create the classes for the links sliding animation */
+.slide-links-in {
+  animation: slide-links-in 0.5s ease forwards;
+}
+
+.slide-links-out {
+  animation: slide-links-out 0.5s ease forwards;
+}
+
+/* Create keyframes to control the animations for sliding the links on and off
+the page */
+@keyframes slide-links-in {
+  from {
+      right: -60%;
   }
-  
-  .nav-label::after {
-      transform: translateY(-0.7rem);
+  to {
+      right: 0%;
   }
-  
-  /* Create the changed classes to change up the postioning
-  of the label after clicked. Will perform an animation. */
-  .label-changed {
-      transform: rotate(720deg);
-      background-color: transparent;
+}
+
+@keyframes slide-links-out {
+  from {
+      right: 0%;
   }
-  
-  .nav-label.label-changed::before {
-      transform: translateY(0rem) rotate(45deg);
+  to {
+      right: -60%;
   }
-  
-  .nav-label.label-changed::after {
-      transform: translateY(-1.2rem) rotate(-45deg);
-  }
-  
-  /* This pushes the navigation links off the screen 
-  until the label/checkbox is clicked/pressed */
-  .nav-links {
-    align-items: flex-start;
-    background-color: var(--link-bg);
-    border: 2px solid var(--link-border);
-    border-radius: 20px 0 0 20px;
-    border-right: 0;
-    flex-direction: column;
-    height: fit-content;
-    margin: 0;
-    padding: 3rem 2rem 3rem 2rem;
-    position: absolute;
-    right: -60%;
-    text-wrap: nowrap;
-    top: 65px;
-    width: fit-content;
-  }
-  
-  .nav-link {
-    font-size: 1.8rem;
-    position: relative;
-  }
-  
-  /* Removing the underline effect from the links */
-  .nav-link::after {
-    height: 0;
-  }
-  
-  /* Create the classes for the links sliding animation */
-  .slide-links-in {
-    animation: slide-links-in 0.5s ease forwards;
-  }
-  
-  .slide-links-out {
-    animation: slide-links-out 0.5s ease forwards;
-  }
-  
-  /* Create keyframes to control the animations for sliding the links on and off
-  the page */
-  @keyframes slide-links-in {
-    from {
-        right: -60%;
-    }
-    to {
-        right: 0%;
-    }
-  }
-  
-  @keyframes slide-links-out {
-    from {
-        right: 0%;
-    }
-    to {
-        right: -60%;
-    }
-  }
-  }
+}
+
+}
   
   @media screen and (max-width: 686px) {
     .projects-grid {
@@ -620,69 +622,112 @@ recent projects */
     transform: none;
   }
 
+  .post-card:hover .card-description {
+    opacity: 0%;
+  }
+
+  .post-card:hover .card-img {
+    opacity: 100%;
+  }
+
   .project-card:hover {
     box-shadow: none;
     opacity: 100%;
     transform: none;
   }
 
-  /* The flipped class will rotate the card */
+  .project-card:hover .card-description {
+    opacity: 0%;
+  }
+
+  .project-card:hover .card-img {
+    opacity: 100%;
+  }
+
+    /* The flipped class will rotate the card */
 .post-card.flipped .card-inner,
 .project-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
 
-.post-card.flipped .card-description {
-  opacity: 100%;
+  .post-card.flipped .card-description {
+    opacity: 100%;
+  }
+
+  .card-description {
     padding: 0 10%;
-    top: 10%;
-    width: auto;
-}
+      top: 10%;
+      width: auto;
+  }
+
 }
 
-  /* Desktop and non-touch devices */
+/* Desktop and non-touch devices */
 @media (hover: hover) and (pointer: fine) {
+  .post-card {
+    position: relative; /* Make sure the card itself is relative to position the description properly */
+    transition: 0.4s ease;
+  }
+
     /* Front and back should behave as normal */
     .card-front {
-        position: relative;
-        height: 110%;
-      }
-  
-    /* Card description hidden by default */
-    .card-description {
-      opacity: 0; /* Start with opacity 0 */
-      transition: opacity 0.3s ease-in-out;
-      position: absolute; /* Position description absolutely inside the card */
-      top: 50%; /* Vertically center */
-      left: 10%; /* Horizontally center with space */
-      width: 80%; /* Make sure it takes appropriate width */
-      text-align: center; /* Center the text */
-      font-weight: 800;
-      color: var(--font-color);
-      transform: translateY(-50%); /* Center the text vertically */
-      z-index: 3; /* Ensure it's above the image */
+      position: relative;
+      height: 100%;
+      width: 100%;
     }
 
-    .project-card {
-        position: relative; /* Make sure the card itself is relative to position the description properly */
-        overflow: hidden;
-        transition: 0.4s ease;
-      }
-    
-      /* Show the description on hover */
-      .project-card:hover .card-description {
-        opacity: 1; /* Show description on hover */
-      }
-    
-      /* Ensure the image dims on hover */
-      .project-card:hover .card-img {
-        opacity: 0.2; /* Dim the image */
-        transition: opacity 0.3s ease-in-out;
-      }
-    
-      /* Ensure the card hover effect applies */
-      .project-card:hover {
-        box-shadow: 0 0 20px 1px var(--card-glow);
-        transform: scale(1.03);
-      }
+  /* Card description hidden by default */
+  .card-description {
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 0.3s ease-in-out;
+    position: absolute; /* Position description absolutely inside the card */
+    top: 45%; /* Vertically center */
+    left: 10%; /* Horizontally center with space */
+    width: 80%; /* Make sure it takes appropriate width */
+    text-align: center; /* Center the text */
+    font-weight: 800;
+    color: var(--font-color);
+    transform: translateY(-50%); /* Center the text vertically */
+    z-index: 3; /* Ensure it's above the image */
+  }
+
+  /* Show the description on hover */
+  .post-card:hover .card-description {
+    opacity: 1; /* Show description on hover */
+  }
+
+  /* Ensure the image dims on hover */
+  .post-card:hover .card-img {
+    opacity: 0.2; /* Dim the image */
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Ensure the card hover effect applies */
+  .post-card:hover {
+    transform: scale(1.03);
+  }
+
+  .project-card {
+    overflow: hidden;
+    position: relative; /* Make sure the card itself is relative to position the description properly */
+    transition: 0.4s ease;
+  }
+
+  /* Show the description on hover */
+  .project-card:hover .card-description {
+    opacity: 1; /* Show description on hover */
+  }
+
+  /* Ensure the image dims on hover */
+  .project-card:hover .card-img {
+    opacity: 0.2; /* Dim the image */
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Ensure the card hover effect applies */
+  .project-card:hover {
+    transform: scale(1.03);
+  }
+
+  
 }

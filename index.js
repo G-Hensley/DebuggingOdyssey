@@ -162,3 +162,14 @@ navLinks.forEach(link => {
     closeMenu();  // Close the menu when any navbar link is clicked
   });
 });
+
+// Get the current page URL path
+const currentPath = window.location.pathname;
+
+// Loop through each link and check if its href matches the current URL path
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+        // Add the class to the current page link
+        link.setAttribute("id", "current-page");
+    }
+});

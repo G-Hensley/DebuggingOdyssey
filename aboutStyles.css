@@ -25,28 +25,31 @@
 
 /* These are the main/root fonts and colors for the website */
 :root {
-  --accent-color: rgb(20, 9, 65);
-  --main-bg: #1b1a55;
   --main-font: 'Lato', sans-serif;
-  --font-color: #c0bfdd;
-  --font-color-accent: rgb(157, 157, 157);
-  --secondary-bg: #1c2f73;
-  --third-bg: #2c5e7c;
-  --link-bg: black;
-  --link-border: white;
+  --accent-color: #18323a;        /* A dark, muted teal for a calm accent */
+  --secondary-accent: #1e3338;    /* A mid-dark grayish teal */
+  --third-accent: #1d4b53;
+  --main-bg: #101820;             /* A very dark, almost black background */
+  --font-color: #e0e0e0;          /* A light gray for readable text */
+  --font-color-accent: #c0c0c0;   /* Slightly darker gray for less important text */
+  --secondary-bg: #2b4a56;        /* A darker teal/blue background for sections */
+  --pop-color: #577eff;           /* Bright purple/blue for popping elements */
+  --links-border: #e0e0e0;        /* Light gray for link borders to contrast with dark background */
+  --card-glow: teal;
 }
 
 /* This will control the light mode switch for the customer whenever it's either
 set on their device or they click the light/dark mode button */
 .light-mode {
-  --accent-color: rgb(76, 186, 250);
-  --main-bg: rgb(0, 162, 255);
+  --accent-color: #c1d1d8;
+  --secondary-accent: #7f888b;
+  --main-bg: #d9f4fd;
   --font-color: black;
   --font-color-accent: rgb(97, 97, 97);
-  --secondary-bg: rgb(81, 180, 255);
-  --third-bg: blue;
-  --link-bg: white;
-  --link-border: black;
+  --secondary-bg: #9bbed2;
+  --pop-color: #001989;
+  --links-border: black;
+  --card-glow: blue;
 }
 
 body, html {
@@ -62,13 +65,12 @@ body, html {
 /* This is for the main navigation bar that will contain the title and the links for
 other websites */
 .navbar {
-  align-items: flex-end;
-  background-color: var(--accent-color);
-  box-shadow: 0px 1px 20px black;
+  align-items: center;
+  background-image: linear-gradient(180deg, var(--accent-color), var(--secondary-accent));
+  box-shadow: 0px 1px 20px -6px black;
   display: flex;
-  height: 45px;
+  height: 60px;
   justify-content: center;
-  padding-top: 0.5rem;
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -79,9 +81,8 @@ other websites */
   color: var(--font-color);
   font-size: 2rem;
   margin: 0;
-  margin-bottom: 0.2rem;
   margin-left: 2rem;
-  text-shadow: 0px 1.2px var(--font-color-accent), 2px 1px 8px black;
+  padding: 0;
   text-decoration: none;
 }
 
@@ -90,8 +91,8 @@ other websites */
   background-color: transparent;
   border: none;
   cursor: pointer;
-  margin-bottom: 0.1rem;
   margin-left: auto;
+  margin-top: 5px;
   padding: 0;
   transition: all 0.2s;
 }
@@ -127,7 +128,6 @@ links in the navbar */
   display: flex;
   gap: 20px;
   list-style: none;
-  margin-bottom: 0.2rem;
   margin-right: 4rem;
 }
 
@@ -149,7 +149,7 @@ or after you vist the link */
 /* This will create/control the bar that will be animated to
 slid under each of the links */
 .nav-link::after {
-  background-color: var(--font-color);
+  background-color: var(--links-border);
   bottom: -2px;
   content: '';
   height: 3px;
@@ -164,6 +164,12 @@ of the navigation links */
 .nav-link:hover::after {
   width: 100%;
 }
+
+#current-page {
+  color: var(--pop-color);
+  font-weight: bolder;
+}
+
 
 .wrapper {
   display: flex;
@@ -207,7 +213,7 @@ of the navigation links */
 }
 
 footer {
-  background-color: var(--accent-color);
+  background-image: linear-gradient(180deg, var(--accent-color) ,var(--secondary-accent));
   bottom: 0;
   display: flex;
   gap: 4rem;
@@ -221,7 +227,7 @@ footer {
 /* This will control the titles for the sections in the footer */
 .footer-section-title {
   font-size: 1.4rem;
-  font-weight: bold;
+  font-weight: 750;
   margin-bottom: 0;
   margin-top: 0;
   padding: 0;
@@ -269,14 +275,14 @@ footer {
 .page-link {
   color: var(--font-color);
   font-size: 1.2rem;
-  font-weight: 550;
+  font-weight: 450;
   position: relative;
   text-decoration: none;
   width: fit-content;
 }
 
 .page-link::after {
-  background-color: var(--font-color);
+  background-color: var(--links-border);
   bottom: -2px;
   content: "";
   height: 3px;
@@ -323,20 +329,53 @@ footer {
   transform: scale(1.2);
 }
 
+@media screen and (max-width: 1400px) {
+  /* Switches the content to a column instead of a row */
+  .main-content {
+    flex-direction: column;
+    gap: 0;
+    padding-top: 20px;
+  }
+
+  /* Allows the post section to take up the entire width of the screen */
+  .post-section {
+    width: 100%;
+  }
+
+  .posts-grid {
+    justify-content: center;
+  }
+
+  .section-title {
+    margin-top: 0;
+  }
+
+  /* Hide the section divider */
+  .section-divider {
+    display: none;
+    height: 0;
+    width: 0;
+  }
+
+  /* Allows the project section to take up the entire width of the screen */
+  .project-section {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 800px) {
   /* Creating the nav label as an object with a width height
     and background color to make a design and animation with it. */
     .nav-label, .nav-label::before, .nav-label::after {
-      background-color: var(--font-color);
+      background-color: var(--pop-color);
       border-radius: 20px;
       cursor: pointer;
       display: block;
       height: 4.5px;
       margin: auto;
-      margin-bottom: 0.9rem;
       margin-right: 2rem;
       padding: 0;
-      transition: all 0.5s;
+      transition: all 0.3s;
       width: 35px;
   }
 
@@ -345,7 +384,7 @@ footer {
 }
 
 .nav-label::before {
-    transform: translateY(-0.5rem);
+    transform: translateY(0.4rem);
 }
 
 .nav-label::after {
@@ -355,24 +394,24 @@ footer {
 /* Create the changed classes to change up the postioning
 of the label after clicked. Will perform an animation. */
 .label-changed {
-    transform: rotate(720deg);
+    transform: rotate(360deg);
     background-color: transparent;
 }
 
 .nav-label.label-changed::before {
-    transform: translateY(0rem) rotate(45deg);
+    transform: translateY(0.1rem) rotate(45deg);
 }
 
 .nav-label.label-changed::after {
-    transform: translateY(-1.2rem) rotate(-45deg);
+    transform: translateY(-0.2rem) rotate(-45deg);
 }
 
 /* This pushes the navigation links off the screen 
 until the label/checkbox is clicked/pressed */
 .nav-links {
   align-items: flex-start;
-  background-color: var(--link-bg);
-  border: 2px solid var(--link-border);
+  background-color: var(--secondary-accent);
+  border: 3px solid var(--links-border);
   border-radius: 20px 0 0 20px;
   border-right: 0;
   flex-direction: column;
@@ -425,10 +464,6 @@ the page */
   }
 }
 
-  /* Changing the width of the paragraphs for smaller devices */
-  .about-paragraph {
-    width: 80%;
-  }
 }
 
 @media screen and (max-width: 625px) {
