@@ -677,7 +677,7 @@ the page */
   .card-front,
   .card-back {
     backface-visibility: hidden;
-    border-radius: 20px;
+    border-radius: 5px;
     height: 100%;
     position: absolute;
     width: 100%;
