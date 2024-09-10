@@ -109,8 +109,9 @@
   
   /* Alter the image for the dark mode button to ensure it fits in the navbar */
   .dk-lt-img {
-    width: 1.6rem;
+    width: 1.9rem;
   }
+  
   
   /* This will hide the nav toggle and label for the toggle
   until the users display is 800px or less wide */
