@@ -463,6 +463,10 @@ the page */
   }
 }
 
+.about-paragraph {
+  width: 75%;
+}
+
 }
 
 @media screen and (max-width: 625px) {
