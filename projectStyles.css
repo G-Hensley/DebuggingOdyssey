@@ -233,6 +233,7 @@ recent projects */
     flex-direction: column;
     height: 280px;
     margin: 0;
+    overflow: hidden;
     transition: 0.4s;
   }
   
@@ -268,9 +269,10 @@ recent projects */
   text-decoration: none;
 }
 
-/* This is to control the images for the post cards */
+/* This is to control the images for the cards */
 .card-img {
-  height: 100%;
+  min-height: 280px;
+  object-fit: fill;
   position: relative;
   transition: all 0.4s;
   width: 100%;
