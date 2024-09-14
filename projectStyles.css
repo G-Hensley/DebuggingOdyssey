@@ -271,7 +271,7 @@ recent projects */
 
 /* This is to control the images for the cards */
 .card-img {
-  min-height: 280px;
+  min-height: 285px;
   object-fit: fill;
   position: relative;
   transition: all 0.4s;
