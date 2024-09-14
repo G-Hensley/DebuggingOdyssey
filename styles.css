@@ -302,6 +302,8 @@ recent projects */
   flex-direction: column;
   gap: 0.95rem;
   height: 100%;
+  margin-bottom: 0;
+  padding-bottom: 0;
   width: 25%;
 }
 
