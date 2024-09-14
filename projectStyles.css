@@ -271,8 +271,7 @@ recent projects */
 
 /* This is to control the images for the cards */
 .card-img {
-  min-height: 285px;
-  object-fit: fill;
+  height: 282px;
   position: relative;
   transition: all 0.4s;
   width: 100%;
@@ -293,17 +292,30 @@ hidden until the user hovers */
   width: 80%;
 }
 
-  footer {
-    background-color: var(--accent-color);
-    bottom: 0;
-    display: flex;
-    gap: 4rem;
-    justify-content: center;
-    margin: auto;
-    padding: 1.5rem 0 1.5rem 0;
-    position:relative;
-    width: 100%;
-  }
+footer {
+  align-items: center;
+  background-image: linear-gradient(180deg, var(--accent-color) ,var(--secondary-accent));
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: fit-content;
+  justify-content: center;
+  margin: auto;
+  padding: 1.5rem 0 1.5rem 0;
+  position:relative;
+  width: 100%;
+}
+
+.main-footer-content {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  width: 100%;
+}
   
   /* This will control the titles for the sections in the footer */
   .footer-section-title {
@@ -408,6 +420,10 @@ hidden until the user hovers */
   
   #x-logo:hover {
     transform: scale(1.2);
+  }
+
+  .copyright {
+    text-align: center;
   }
 
   @media screen and (max-width: 1400px) {
@@ -545,9 +561,13 @@ the page */
   
     footer {
       align-items: center;
+  }
+  
+    .main-footer-content {
+      align-items: center;
       flex-direction: column;
       gap: 2rem;
-  }
+    }
   
     .networking-links {
       flex-direction: row;
