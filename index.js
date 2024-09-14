@@ -69,19 +69,19 @@ function applyThemeBasedOnPreference() {
   if (currentTheme === "light" || (!prefersDarkScheme && !currentTheme)) {
       // Apply light mode
       document.body.classList.add("light-mode");
-      changeAttribute(lightModeImg, "images/dark-mode.png");
-      changeAttribute(githubLogo, "images/b-github-logo.png");
-      changeAttribute(linkedinLogo, "images/b-linkedin-logo.png");
-      changeAttribute(goodreadsLogo, "images/b-goodreads-logo.png");
-      changeAttribute(xLogo, "images/b-x-logo.png");
+      changeAttribute(lightModeImg, "images/dark-mode.webp");
+      changeAttribute(githubLogo, "images/b-github-logo.webp");
+      changeAttribute(linkedinLogo, "images/b-linkedin-logo.webp");
+      changeAttribute(goodreadsLogo, "images/b-goodreads-logo.webp");
+      changeAttribute(xLogo, "images/b-x-logo.webp");
   } else {
       // Apply dark mode
       document.body.classList.remove("light-mode");
-      changeAttribute(lightModeImg, "images/light-mode.png");
-      changeAttribute(githubLogo, "images/w-github-logo.png");
-      changeAttribute(linkedinLogo, "images/w-linkedin-logo.png");
-      changeAttribute(goodreadsLogo, "images/w-goodreads-logo.png");
-      changeAttribute(xLogo, "images/w-x-logo.png");
+      changeAttribute(lightModeImg, "images/light-mode.webp");
+      changeAttribute(githubLogo, "images/w-github-logo.webp");
+      changeAttribute(linkedinLogo, "images/w-linkedin-logo.webp");
+      changeAttribute(goodreadsLogo, "images/w-goodreads-logo.webp");
+      changeAttribute(xLogo, "images/w-x-logo.webp");
   }
 }
 
@@ -96,7 +96,7 @@ darkLightBtn.addEventListener('click', () => {
       body.classList.remove('light-mode');
       localStorage.setItem("theme", "dark");
       changeAttribute(lightModeImg, "images/light-mode.png");
-      changeAttribute(githubLogo, "images/w-github-logo.png");
+      changeAttribute(githubLogo, "images/w-github-logo.webp");
       changeAttribute(linkedinLogo, "images/w-linkedin-logo.png");
       changeAttribute(goodreadsLogo, "images/w-goodreads-logo.png");
       changeAttribute(xLogo, "images/w-x-logo.png");
@@ -105,7 +105,7 @@ darkLightBtn.addEventListener('click', () => {
       body.classList.add('light-mode');
       localStorage.setItem("theme", "light");
       changeAttribute(lightModeImg, "images/dark-mode.png");
-      changeAttribute(githubLogo, "images/b-github-logo.png");
+      changeAttribute(githubLogo, "images/b-github-logo.webp");
       changeAttribute(linkedinLogo, "images/b-linkedin-logo.png");
       changeAttribute(goodreadsLogo, "images/b-goodreads-logo.png");
       changeAttribute(xLogo, "images/b-x-logo.png");

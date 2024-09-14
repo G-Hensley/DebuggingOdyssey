@@ -35,7 +35,6 @@
     --secondary-bg: #2b4a56;        /* A darker teal/blue background for sections */
     --pop-color: #577eff;           /* Bright purple/blue for popping elements */
     --links-border: #e0e0e0;        /* Light gray for link borders to contrast with dark background */
-    --card-glow: teal;
 }
   
   /* This will control the light mode switch for the customer whenever it's either
@@ -49,7 +48,6 @@
     --secondary-bg: #9bbed2;
     --pop-color: #001989;
     --links-border: black;
-    --card-glow: blue;
   }
   
   body, html {
@@ -115,11 +113,7 @@
   
   /* This will hide the nav toggle and label for the toggle
   until the users display is 800px or less wide */
-  .nav-toggle {
-    display: none;
-  }
-  
-  .nav-label {
+  .nav-toggle, .nav-label {
     display: none;
   }
   
@@ -165,6 +159,11 @@
   .nav-link:hover::after {
     width: 100%;
   }
+
+  .nav-link:focus, .page-link:focus {
+    outline: 2px solid var(--pop-color);
+ }
+ 
 
   #current-page {
     color: var(--pop-color);
