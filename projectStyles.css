@@ -253,7 +253,7 @@ recent projects */
   align-items: center;
   background-color: var(--secondary-bg);
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   height: 3.5rem;
   justify-content: center;
   margin: 0;
@@ -264,7 +264,7 @@ recent projects */
 
 .card-title {
   color: var(--font-color);
-  font-weight: 800;
+  font-weight: 750;
   text-decoration: none;
 }
 
@@ -280,8 +280,8 @@ recent projects */
 hidden until the user hovers */
 .card-description {
   color: var(--font-color);
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.4rem;
+  font-weight: 700;
   left: 10%;
   position: absolute;
   opacity: 0%;
