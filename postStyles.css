@@ -478,7 +478,7 @@ footer {
   }
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     /* Creating the nav label as an object with a width height
     and background color to make a design and animation with it. */
     .nav-label, .nav-label::before, .nav-label::after {

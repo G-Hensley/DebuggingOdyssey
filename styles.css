@@ -549,7 +549,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   /* Creating the nav label as an object with a width height
     and background color to make a design and animation with it. */
     .nav-label, .nav-label::before, .nav-label::after {
@@ -657,10 +657,6 @@ the page */
     grid-template-columns: repeat(auto-fit, minmax(300px, 0.85fr));
   }
 
-  #bottom-card {
-    grid-column: span 1;
-    margin: 0;
-  }
 }
 
 @media screen and (max-width: 625px) {
