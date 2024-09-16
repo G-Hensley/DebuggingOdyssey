@@ -726,7 +726,7 @@ the page */
     color: var(--font-color);
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    /* padding: 1rem; */
     transform: rotateY(180deg);
   }
 
@@ -776,6 +776,14 @@ the page */
 
   .project-card.flipped .card-description {
     opacity: 100%;
+  }
+
+  .card-description {
+    position: relative; /* For mobile, you can make the position relative to avoid absolute centering issues */
+    opacity: 1; /* Ensure it shows on mobile */
+    transform: none; /* Remove transform on mobile to prevent centering issues */
+    top: 0; /* Adjust positioning */
+    left: 0;
   }
 
 }

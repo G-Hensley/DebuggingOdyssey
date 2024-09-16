@@ -271,16 +271,18 @@ width: 100%;
 /* This will control the description text for the post cards which will be
 hidden until the user hovers */
 .card-description {
-color: var(--font-color);
-font-size: 1.4rem;
-font-weight: 600;
-left: 10%;
-position: absolute;
-opacity: 0%;
-text-align: center;
-text-decoration: none;
-transition: opacity 0.4s;
-width: 80%;
+  color: var(--font-color);
+  font-size: 1.4rem;
+  font-weight: 600;
+  position: absolute;
+  opacity: 0%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.4s;
+  width: 80%;
 }
 
 /* Makes the post description a block element when the user hovers over the card(s) */
@@ -653,7 +655,6 @@ the page */
     color: var(--font-color);
     display: flex;
     justify-content: center;
-    padding: 1rem;
     transform: rotateY(180deg);
   }
 
@@ -702,9 +703,11 @@ the page */
   }
 
   .card-description {
-    padding: 0 10%;
-      top: 10%;
-      width: auto;
+    position: relative; /* For mobile, you can make the position relative to avoid absolute centering issues */
+    opacity: 1; /* Ensure it shows on mobile */
+    transform: none; /* Remove transform on mobile to prevent centering issues */
+    top: 0; /* Adjust positioning */
+    left: 0;
   }
 
 }
