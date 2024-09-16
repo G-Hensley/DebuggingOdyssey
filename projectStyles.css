@@ -669,9 +669,9 @@ the page */
   transform: rotateY(180deg);
 }
 
-  .post-card.flipped .card-description {
-    opacity: 100%;
-  }
+.project-card.flipped .card-description {
+  opacity: 100%;
+}
 
   .card-description {
     position: relative; /* For mobile, you can make the position relative to avoid absolute centering issues */
