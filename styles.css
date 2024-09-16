@@ -180,7 +180,6 @@ It will be a flexbox to contain both side by side. */
     flex-direction: row;
     height: fit-content;
     justify-content: space-between;
-    margin-bottom: 0px;
     margin-top: 60px;
     padding-bottom: 0;
     position: relative;
@@ -193,7 +192,7 @@ It will be a flexbox to contain both side by side. */
     flex-direction: column;
     gap: 0.95rem;
     margin-bottom: 0;
-    padding-bottom: 0;
+    padding-bottom: 2rem;
     width: 75%;
 }
 
@@ -294,7 +293,7 @@ hidden until the user hovers */
 .section-divider {
   background-image: linear-gradient(180deg, var(--accent-color), var(--secondary-accent));
   border: none;
-  height: inherit(post-section);
+  height: inherit();
   margin: 0;
   padding: 0px;
   width: 4px;
@@ -308,7 +307,7 @@ recent projects */
   gap: 0.95rem;
   height: 100%;
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding-bottom: 2rem;
   width: 25%;
 }
 
@@ -540,12 +539,6 @@ footer {
 @media screen and (max-width: 1012px) {
   .projects-grid {
     justify-content: center;
-  }
-
-  #bottom-card {
-    grid-column: span 2;
-    margin-left: 25%;
-    margin-right: 25%;
   }
 }
 
