@@ -270,10 +270,12 @@ hidden until the user hovers */
 .card-description {
   color: var(--font-color);
   font-size: 1.4rem;
-  font-weight: 700;
-  left: 10%;
+  font-weight: 600;
   position: absolute;
   opacity: 0%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   text-decoration: none;
   transition: opacity 0.4s;
@@ -772,10 +774,8 @@ the page */
     opacity: 100%;
   }
 
-  .card-description {
-    padding: 0 10%;
-      top: 10%;
-      width: auto;
+  .project-card.flipped .card-description {
+    opacity: 100%;
   }
 
 }
@@ -798,14 +798,6 @@ the page */
   .card-description {
     opacity: 0; /* Start with opacity 0 */
     transition: opacity 0.3s ease-in-out;
-    position: absolute; /* Position description absolutely inside the card */
-    top: 45%; /* Vertically center */
-    left: 10%; /* Horizontally center with space */
-    width: 80%; /* Make sure it takes appropriate width */
-    text-align: center; /* Center the text */
-    font-weight: 800;
-    color: var(--font-color);
-    transform: translateY(-50%); /* Center the text vertically */
     z-index: 3; /* Ensure it's above the image */
   }
 
